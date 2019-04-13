@@ -1,12 +1,17 @@
 <!-- search bar -->
 <div class="container mt-4">
   <div class="row justify-content-center" id="search-bar">
+    <div class="col-2">
+      <div class="input-group-append justify-content-center">
+        <a href="/add" class="btn btn-outline-danger" role="button" aria-pressed="true">Create</a>
+      </div>
+    </div>
     <div class="col-7">
       <form action="/search">
         <div class="input-group mb-3">
 
-          <input type="text" name="keyword" value="{{keyword}}" class="form-control rounded-left" placeholder="輸入餐廳、分類"
-            aria-label="Movie Name..." aria-describedby="search-button">
+          <input type="text" name="keyword" value="{{keyword}}" class="form-control rounded-left"
+            placeholder="輸入餐廳名稱、分類" aria-label="Restaurant Name..." aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-secondary" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
@@ -21,7 +26,7 @@
 <div class="container mt-4">
   <ul class="list-unstyled">
     {{#each restaurants}}
-    <a href="#" class="row justify-content-center">
+    <a href="/detail/{{this._id}}" class="row justify-content-center">
       <li class="media mb-4 p-4 col-md-10 col-12">
         <div class="restaurantImg col-3">
           <img class="mr-3" src="{{this.image}}" alt="{{this.name}}">
