@@ -1,22 +1,4 @@
 <!-- search bar -->
-{{!-- <div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳、分類"
-            aria-label="Restaurant Name..." value="" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> --}}
-
-<!-- search bar -->
 <div class="container mt-4">
   <div class="row justify-content-center" id="search-bar">
     <div class="col-7">
@@ -36,33 +18,22 @@
   </div>
 </div>
 <!-- restaurant list -->
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
+<div class="container mt-4">
+  <ul class="list-unstyled">
+    {{#each restaurants}}
+    <a href="#" class="row justify-content-center">
+      <li class="media mb-4 p-4 col-md-10 col-12">
+        <div class="restaurantImg col-3">
+          <img class="mr-3" src="{{this.image}}" alt="{{this.name}}">
+        </div>
+        <div class="media-body col-10">
+          <h5 class="mt-0 mb-1">{{this.name}}</h5>
+          {{this.description}}
+        </div>
+      </li>
+    </a>
+    {{/each}}
 
-        {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
-          <div class="card mb-3">
-            <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
-            <div class="card-body p-3">
-              <h6 class="card-title mb-1">{{this.name}}</h6>
+  </ul>
 
-              <div class="restaurant-category mb-1">
-                <i class="fas fa-utensils pr-2"></i> {{this.category}}
-              </div>
-
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{this.rating}}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
-
-            </div>
-          </div>
-        </a>
-        {{/each}}
-
-      </div>
-    </div>
-  </div>
 </div>

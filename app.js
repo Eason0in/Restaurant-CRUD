@@ -1,18 +1,22 @@
 const express = require('express')
-const app = express()
 const exphbs = require('express-handlebars')
-const bodyParser = require('body-parser')
-const port = 3000
 const fileUpload = require('express-fileupload')
+const Restaurant = require('./models/restaurant.js')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
+
+const app = express()
+const port = 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-app.use(bodyParser.urlencoded({ extended: true }), fileUpload())
+app.use(bodyParser.urlencoded({ extended: true }), fileUpload(), express.static('public'))
+mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Restaurant.find((err, restaurants) => {
+    res.render('index', { restaurants })
+  })
 })
 
 app.post('/add', (req, res) => {

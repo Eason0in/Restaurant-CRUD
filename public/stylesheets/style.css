@@ -1,0 +1,33 @@
+a,
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+nav > a {
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.list-unstyled {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.media {
+  border-bottom: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.media:hover {
+  z-index: 1;
+  transform: scale(1.05);
+  border-radius: 20px;
+  border: 2px solid #008bf8;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.restaurantImg > img {
+  max-width: 100%;
+}
