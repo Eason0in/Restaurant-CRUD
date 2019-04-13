@@ -2,8 +2,10 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const fileUpload = require('express-fileupload')
 const Restaurant = require('./models/restaurant.js')
+
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
 
 const app = express()
 const port = 3000
@@ -12,6 +14,15 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }), fileUpload(), express.static('public'))
 mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('db error!')
+})
+
+db.once('open', () => {
+  console.log('db is connected!')
+})
 
 //首頁
 app.get('/', (req, res) => {
@@ -43,14 +54,36 @@ app.get('/detail/:_id', (req, res) => {
 })
 
 //新增頁面
-app.post('/add', (req, res) => {
-  const uploadFile = req.files.uploadFile
-  uploadFile.mv(`./public/img/${uploadFile.name}`, function(err) {
-    if (err) return res.status(500).send(err)
+app.get('/add', (req, res) => {
+  Restaurant.find((err, currentItem) => {
+    const currentId = currentItem[0]._id
+    let newId = Number(currentId) + 1
+    res.render('new', { _id: newId })
   })
-  res.redirect('/')
+    .sort({ _id: -1 })
+    .limit(1)
+})
+
+//新增
+app.post('/add', (req, res) => {
+  const newRestaurant = Restaurant(req.body)
+  if (req.files) {
+    const uploadFile = req.files.uploadFile
+    let imgUrl = `./public/img/${uploadFile.name}`
+    newRestaurant.image = `../img/${uploadFile.name}`
+    uploadFile.mv(imgUrl, function(err) {
+      if (err) console.error(err)
+    })
+  }
+
+  newRestaurant.save(err => {
+    if (err) console.error(err)
+    res.redirect('/')
+  })
 })
 
 app.listen(port, () => {
   console.log(`Start in http://localhost:${port}`)
 })
+
+function getNewId() {}
