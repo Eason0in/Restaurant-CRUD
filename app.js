@@ -45,7 +45,7 @@ app.get('/search', (req, res) => {
   )
 })
 
-//詳細資料頁面
+//GET詳細資料頁面
 app.get('/detail/:_id', (req, res) => {
   Restaurant.findById(req.params._id, (err, restaurant) => {
     if (err) console.error(err)
@@ -53,18 +53,15 @@ app.get('/detail/:_id', (req, res) => {
   })
 })
 
-//新增頁面
+//GET新增頁面
 app.get('/add', (req, res) => {
   Restaurant.find((err, currentItem) => {
-    const currentId = currentItem[0]._id
-    let newId = Number(currentId) + 1
+    const newId = currentItem.length + 1
     res.render('new', { _id: newId })
   })
-    .sort({ _id: -1 })
-    .limit(1)
 })
 
-//新增
+//POST新增
 app.post('/add', (req, res) => {
   const newRestaurant = Restaurant(req.body)
   if (req.files) {
@@ -82,8 +79,15 @@ app.post('/add', (req, res) => {
   })
 })
 
+//POST刪除
+app.post('/delete/:_id', (req, res) => {
+  Restaurant.findByIdAndDelete(req.params._id, err => {
+    if (err) console.error(err)
+    res.redirect('/')
+  })
+})
+
+//監聽伺服器
 app.listen(port, () => {
   console.log(`Start in http://localhost:${port}`)
 })
-
-function getNewId() {}
