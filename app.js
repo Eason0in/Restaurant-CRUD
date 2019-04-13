@@ -13,7 +13,7 @@ const port = 3000
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }), fileUpload(), express.static('public'))
-mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true, useFindAndModify: false })
 const db = mongoose.connection
 
 db.on('error', () => {
@@ -82,6 +82,32 @@ app.post('/add', (req, res) => {
 //POST刪除
 app.post('/delete/:_id', (req, res) => {
   Restaurant.findByIdAndDelete(req.params._id, err => {
+    if (err) console.error(err)
+    res.redirect('/')
+  })
+})
+
+//GET修改頁面
+app.get('/edit/:_id', (req, res) => {
+  Restaurant.findById(req.params._id, (err, restaurant) => {
+    if (err) console.error(err)
+    restaurant.imageStr = restaurant.image.split('/')[2]
+    res.render('edit', { restaurant })
+  })
+})
+
+//POST修改
+app.post('/edit/:_id', (req, res) => {
+  if (req.files) {
+    const uploadFile = req.files.uploadFile
+    let imgUrl = `./public/img/${uploadFile.name}`
+    req.body.image = `../img/${uploadFile.name}`
+    uploadFile.mv(imgUrl, function(err) {
+      if (err) console.error(err)
+    })
+  }
+
+  Restaurant.findByIdAndUpdate(req.body._id, req.body, err => {
     if (err) console.error(err)
     res.redirect('/')
   })
