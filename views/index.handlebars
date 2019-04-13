@@ -3,7 +3,7 @@
   <div class="row justify-content-center" id="search-bar">
     <div class="col-2">
       <div class="input-group-append justify-content-center">
-        <a href="/add" class="btn btn-outline-danger" role="button" aria-pressed="true">Create</a>
+        <a href="/add" class="btn btn-danger" role="button" aria-pressed="true">Create</a>
       </div>
     </div>
     <div class="col-7">
@@ -13,7 +13,8 @@
           <input type="text" name="keyword" value="{{keyword}}" class="form-control rounded-left"
             placeholder="輸入餐廳名稱、分類" aria-label="Restaurant Name..." aria-describedby="search-button">
           <div class="input-group-append">
-            <button class="btn btn-secondary" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
+                class="fas fa-search"></i></button>
           </div>
         </div>
       </form>
@@ -27,22 +28,29 @@
   <ul class="list-unstyled">
     {{#each restaurants}}
     <li class="media mb-4 row justify-content-center ">
-      <a href="/detail/{{this._id}}" class="p-4 col-md-10 col-12">
+      <a href="/detail/{{this._id}}" class="px-2 py-4 col-md-10 col-11">
         <div class="row">
-          <div class="restaurantImg col-3">
+          <div class="restaurantImg col-3 align-self-center">
             <img class="mr-3" src="{{this.image}}" alt="{{this.name}}">
           </div>
 
           <div class="media-body col-8">
-            <h5 class="mt-0 mb-1">{{this.name}}</h5>
-            {{this.description}}
+            <div>
+              <h5 class="mt-0 mb-1 font-weight-bold">{{this.name}}</h5>
+              {{this.description}}
+            </div>
+
+            <div class="stars d-flex mt-2">
+              {{#times this.rating}}{{/times}}
+            </div>
+
           </div>
         </div>
       </a>
       <div class="media-btn col-1 align-self-center d-flex">
-        <a href="/edit/{{this._id}}" class="p-2"><i class="far fa-edit h5"></i></a>
+        <a href="/edit/{{this._id}}" class="p-2"><i class="far fa-edit h3"></i></a>
         <form action="/delete/{{this._id}}" method="POST" class="p-2">
-          <button type="submit"><i class="far fa-trash-alt h5"></i></button>
+          <button type="submit"><i class="far fa-trash-alt h3"></i></button>
         </form>
       </div>
     </li>

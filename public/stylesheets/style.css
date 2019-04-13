@@ -1,3 +1,9 @@
+html,
+body {
+  width: 100%;
+  height: auto;
+}
+
 body,
 button,
 input,
@@ -35,6 +41,11 @@ nav > a {
   border-radius: 0.25rem;
 }
 
+.media-body {
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+}
+
 .media:hover {
   z-index: 1;
   transform: scale(1.05);
@@ -50,4 +61,55 @@ nav > a {
 
 .far:hover {
   color: lightslategray;
+}
+
+.letter-space {
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+}
+
+.detail-btn > a,
+.detail-btn button {
+  padding: 0.1rem 0.4rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.starts,
+.star {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.stars {
+  display: inline-block;
+  width: 50%;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.stars,
+.star,
+i.fa-star-gray {
+  color: #cbcbcb;
+}
+.stars,
+.star,
+i.fa-star-yellow {
+  color: #fcb040;
+}
+.star > .fa {
+  font-size: 25px;
+}
+.percent-star {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.detail-starts .fa {
+  font-size: 20px;
 }
