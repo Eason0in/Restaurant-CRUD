@@ -23,7 +23,14 @@ git clone https://github.com/Eason0in/Restaurant-CRUD.git
 
 ```
 
-2.產生預設資料至 MongoDB
+2.安裝套件
+
+```
+npm install
+
+```
+
+3.產生預設資料至 MongoDB
 
 切換至種子資料目錄
 
@@ -40,7 +47,7 @@ node restaurantSeeder.js
 
 終端顯示 `insert done!` 即完成新增資料
 
-3.開啟程式
+4.開啟程式
 
 切回至專案目錄
 
