@@ -1,3 +1,4 @@
+'use strict'
 const mongoose = require('mongoose')
 const Restaurant = require('../restaurant.js')
 mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
