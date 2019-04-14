@@ -12,7 +12,7 @@
   - 點選 Google Map`顯示詳細地圖`可查看位置詳細資料
 - 點選`Create`新增餐廳包含上傳圖片、評分、類別、地址等資訊，Google Map 位置會依照輸入之地址產生
 - 點選 :pencil2: 可編輯此餐廳資料
-- 點選 :wastebasket:可刪除此餐廳資料
+- 點選 :wastebasket: 可刪除此餐廳資料
 
 ### 安裝
 
@@ -23,7 +23,16 @@ git clone https://github.com/Eason0in/Restaurant-CRUD.git
 
 ```
 
-2.安裝套件
+2.初始
+
+切至專案資料夾
+
+```
+cd Restaurant-CRUD
+
+```
+
+安裝套件
 
 ```
 npm install
@@ -63,6 +72,12 @@ npm run start
 ```
 
 終端顯示 `db is connected!` 即啟動完成，請至[http://localhost:3000](http://localhost:3000)開始使用程式
+
+## Screen Photo
+
+![首頁](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/index.JPG)
+![修改](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/edit.JPG)
+![搜尋](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/search.JPG)
 
 ## 使用工具
 
