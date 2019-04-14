@@ -11,8 +11,8 @@
   - 點選`Delete`刪除此筆餐廳資料
   - 點選 Google Map`顯示詳細地圖`可查看位置詳細資料
 - 點選`Create`新增餐廳包含上傳圖片、評分、類別、地址等資訊，Google Map 位置會依照輸入之地址產生
-- 點選 <i class="far fa-edit h3"></i> 可編輯此餐廳資料
-- 點選 <i class="far fa-trash-alt h3"></i> 可刪除此餐廳資料
+- 點選 :pencil2: 可編輯此餐廳資料
+- 點選 :wastebasket:可刪除此餐廳資料
 
 ### 安裝
 
@@ -71,8 +71,3 @@ npm run start
 - [星星依評分填色 CodePen](https://codepen.io/mjweaver01/pen/rGaBaz) - Mike Weaver
 - [版面設計參考貓途鷹](https://www.tripadvisor.com.tw/)- TripAdvisor LLC
 - [開發者](https://github.com/Eason0in)- Eason
-
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-</head>
