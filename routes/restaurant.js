@@ -5,17 +5,6 @@ const Handlebars = require('handlebars')
 const getStartsHtml = require('../public/javascripts/getStartsHtml')
 const path = require('path')
 
-//搜尋依餐廳、分類
-router.get('/search', (req, res) => {
-  const keywordRegex = new RegExp(req.query.keyword, 'i')
-  Restaurant.find(
-    {
-      $or: [{ name: { $regex: keywordRegex } }, { category: { $regex: keywordRegex } }]
-    },
-    (err, restaurants) => (err ? console.error(err) : res.render('index', { restaurants, keyword: req.query.keyword }))
-  )
-})
-
 //GET詳細資料頁面
 router.get('/detail/:_id', (req, res) => {
   Restaurant.findById(req.params._id, (err, restaurant) => {

@@ -22,6 +22,8 @@ db.once('open', () => console.log('db is connected!'))
 
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurant'))
+app.use('/sort', require('./routes/sort'))
+app.use('/search', require('./routes/search'))
 
 //監聽伺服器
 app.listen(port, () => console.log(`Start in http://localhost:${port}`))
