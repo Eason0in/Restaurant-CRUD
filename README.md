@@ -5,6 +5,7 @@
 ## 功能列表
 
 - 依照餐廳名稱及餐廳類別搜尋
+- 依照餐廳名稱、類別及地區排序
 - 檢視餐廳詳細資訊包含類別、地址、電話、評分、圖片及 Google Map
   - 點選`Back`返回首頁瀏覽全部餐廳資料
   - 點選`Edit`編輯此筆餐廳資料
@@ -20,55 +21,38 @@
 
 ```
 git clone https://github.com/Eason0in/Restaurant-CRUD.git
-
 ```
 
 2.初始
 
-切至專案資料夾
-
 ```
-cd Restaurant-CRUD
-
+cd Restaurant-CRUD  //切至專案資料夾
 ```
 
-安裝套件
-
 ```
-npm install
-
+npm install  //安裝套件
 ```
 
 3.產生預設資料至 MongoDB
 
-切換至種子資料目錄
-
 ```
-cd models\seeds\
+cd models\seeds\  //切換至種子資料目錄
 ```
 
-執行增加資料至 MongoDB
-
 ```
-node restaurantSeeder.js
-
+node restaurantSeeder.js  //執行增加資料至 MongoDB
 ```
 
 終端顯示 `insert done!` 即完成新增資料
 
 4.開啟程式
 
-切回至專案目錄
-
 ```
-cd ..\..
+cd ..\..  //切回至專案目錄
 ```
 
-執行程式
-
 ```
-npm run start
-
+npm run start  //執行程式
 ```
 
 終端顯示 `db is connected!` 即啟動完成，請至[http://localhost:3000](http://localhost:3000)開始使用程式
