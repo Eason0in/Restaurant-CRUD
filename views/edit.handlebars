@@ -1,5 +1,6 @@
 <div class="container my-4">
-  <form ref='uploadForm' id='uploadForm' action='/edit/{{restaurant._id}}' method='POST' encType="multipart/form-data">
+  <form ref='uploadForm' id='uploadForm' action='/restaurants/edit/{{restaurant._id}}?_method=PUT' method='POST'
+    encType="multipart/form-data">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name" class="text-danger">中文名字</label>

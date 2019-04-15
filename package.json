@@ -16,6 +16,7 @@
     "express-fileupload": "^1.1.4",
     "express-handlebars": "^3.0.2",
     "handlebars-helpers": "^0.10.0",
+    "method-override": "^3.0.0",
     "mongoose": "^5.5.1"
   }
 }

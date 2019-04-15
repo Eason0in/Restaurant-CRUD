@@ -12,7 +12,6 @@ db.once('open', () => {
   console.log('db connected!')
   Restaurant.insertMany([
     {
-      _id: 1,
       name: 'Sababa 沙巴巴中東美食',
       name_en: 'Sababa Pita Bar',
       category: '中東料理',
@@ -24,7 +23,6 @@ db.once('open', () => {
       description: '沙巴巴批塔是台灣第一家純手工批塔專賣店,只選用最新鮮的頂級原料,以及道地的中東家傳配方。'
     },
     {
-      _id: 2,
       name: '梅子鰻蒲燒專賣店',
       name_en: 'Umeko Japanese Unagi House',
       category: '日本料理',
@@ -36,7 +34,6 @@ db.once('open', () => {
       description: '鰻魚、鰻魚飯、真空鰻魚'
     },
     {
-      _id: 3,
       name: 'ZIGA ZIGA',
       name_en: 'Ziga Zaga',
       category: '義式餐廳',
@@ -49,7 +46,6 @@ db.once('open', () => {
         '以頂級食材與料理技法完美呈現各類經典義式料理，獅頭造型烤爐現作pizza與開放式廚房現作龍蝦茄汁雞蛋銀絲麵是不可錯過的必嚐推薦！夜間國際級樂團的熱力演出，感受活力四射的現場魅力。'
     },
     {
-      _id: 4,
       name: '艾朋牛排餐酒館',
       name_en: 'A Point Steak & Bar',
       category: '美式',
@@ -62,7 +58,6 @@ db.once('open', () => {
         '從味蕾開始，重拾美味感動。艾朋牛排餐酒館對高級料理的細選珍饌堅持，更勇於翻脫新意，要以平易親人的親切風格，同時不失料理獨家精髓，成功打動每吋挑剔味蕾，讓每位顧客享用鮮嫩Steak牛排風采，咀嚼Pasta義大利麵層次風味！'
     },
     {
-      _id: 5,
       name: 'Gusto Pizza',
       name_en: 'Gusto Pizza',
       category: '義式餐廳',
@@ -75,7 +70,6 @@ db.once('open', () => {
         '我們的披薩師傅從倫敦帶來別於一般口味的經典義大利披薩，而且披薩麵團至少發酵24小時。同時我們也窯烤麵包及甜點，但披薩才是GUSTO最強項。我們製做的每一份餐點，都充滿飽飽的口味及香氣。除此之外，遵循純手工及傳統方式製作是我們的堅持。'
     },
     {
-      _id: 6,
       name: 'WXYZ Bar',
       name_en: 'WXYZ Bar',
       category: '酒吧',
@@ -87,7 +81,6 @@ db.once('open', () => {
       description: '紅酒吧，現代創意料理，開胃小館。提供純素選擇，提供無麩質選擇，提供素食選擇。'
     },
     {
-      _id: 7,
       name: 'Fika Fika Cafe',
       name_en: 'Fika Fika Cafe',
       category: '咖啡',
@@ -100,7 +93,6 @@ db.once('open', () => {
         '我們在乎每一位顧客、賣出去的每一滴咖啡、每一粒咖啡豆。而今，「Fika Fika Cafe Online Store」更期望把如此美好的體驗，分享給喜歡我們的每一位顧客，希望您無論在世界的哪一個角落，都能與我們一起享受「Fika Fika」的美好時光。'
     },
     {
-      _id: 8,
       name: '布娜飛比利時啤酒餐廳',
       name_en: 'Bravo Beer',
       category: '義式餐廳',

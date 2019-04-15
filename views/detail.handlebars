@@ -5,8 +5,9 @@
     <div class="col-12 col-md-5 mx-auto">
       <div class="mb-3 detail-btn">
         <a href="/" class="btn btn-info mr-2" role="button" aria-pressed="true">Back</a>
-        <a href="/edit/{{restaurant._id}}" class="btn btn-info mr-2" role="button" aria-pressed="true">Edit</a>
-        <form action="/delete/{{restaurant._id}}" method="POST" class="d-inline">
+        <a href="/restaurants/edit/{{restaurant._id}}" class="btn btn-info mr-2" role="button"
+          aria-pressed="true">Edit</a>
+        <form action="/restaurants/delete/{{restaurant._id}}?_method=DELETE" method="POST" class="d-inline">
           <button type="submit" class="btn btn-info">Delete</button>
         </form>
       </div>
@@ -51,7 +52,7 @@
     <div class="col-md-5 mx-auto">
 
       <iframe width='85%' height='100%' frameborder='0' scrolling='no' marginheight='0' marginwidth='0'
-        src="https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q={{restaurant.locationStr}}&z=16&output=embed&t=">
+        src="{{restaurant.googleMapUrl}}">
       </iframe>
 
 
