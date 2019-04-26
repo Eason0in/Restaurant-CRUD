@@ -4,9 +4,10 @@ const Restaurant = require('../models/restaurant.js')
 const Handlebars = require('handlebars')
 const getStartsHtml = require('../public/javascripts/getStartsHtml')
 const path = require('path')
+const { authenticated } = require('../config/auth')
 
 //GET詳細資料頁面
-router.get('/detail/:_id', (req, res) => {
+router.get('/detail/:_id', authenticated, (req, res) => {
   Restaurant.findById(req.params._id, (err, restaurant) => {
     if (err) console.error(err)
     const encodeURILocation = encodeURIComponent(restaurant.location)
@@ -17,7 +18,7 @@ router.get('/detail/:_id', (req, res) => {
 })
 
 //GET新增頁面
-router.get('/add', (req, res) => {
+router.get('/add', authenticated, (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) console.error(err)
     res.render('new')
@@ -25,7 +26,7 @@ router.get('/add', (req, res) => {
 })
 
 //POST新增
-router.post('/add', (req, res) => {
+router.post('/add', authenticated, (req, res) => {
   const newRestaurant = Restaurant(req.body)
 
   //把圖片搬到public.img底下
@@ -43,12 +44,12 @@ router.post('/add', (req, res) => {
 })
 
 //POST刪除
-router.delete('/delete/:_id', (req, res) =>
+router.delete('/delete/:_id', authenticated, (req, res) =>
   Restaurant.findByIdAndDelete(req.params._id, err => (err ? console.error(err) : res.redirect('/')))
 )
 
 //GET修改頁面
-router.get('/edit/:_id', (req, res) => {
+router.get('/edit/:_id', authenticated, (req, res) => {
   Restaurant.findById(req.params._id, (err, restaurant) => {
     if (err) console.error(err)
     restaurant.imageStr = path.basename(restaurant.image, '.jpg')
@@ -57,7 +58,7 @@ router.get('/edit/:_id', (req, res) => {
 })
 
 //POST修改
-router.put('/edit/:_id', (req, res) => {
+router.put('/edit/:_id', authenticated, (req, res) => {
   //把圖片搬到public.img底下
   if (req.files) {
     const { uploadFile } = req.files

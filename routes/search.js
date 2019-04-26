@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant.js')
+const sortInfosArray = require('../public/javascripts/sortInfosArray')
 
 //搜尋依餐廳、分類
 router.get('/', (req, res) => {
@@ -9,7 +10,15 @@ router.get('/', (req, res) => {
     {
       $or: [{ name: { $regex: keywordRegex } }, { category: { $regex: keywordRegex } }]
     },
-    (err, restaurants) => (err ? console.error(err) : res.render('index', { restaurants, keyword: req.query.keyword }))
+    (err, restaurants) =>
+      err
+        ? console.error(err)
+        : res.render('index', {
+            restaurants,
+            keyword: req.query.keyword,
+            sortName: req.params.sortName,
+            sortInfosArray
+          })
   )
 })
 module.exports = router
