@@ -15,12 +15,18 @@
 </head>
 
 <body>
+  <header>
 
-  <!-- navigation -->
-  <nav class="navbar navbar-dark  bg-dark">
-    <a class="navbar-brand" href="/">Restaurant List</a>
-  </nav>
-
+    <!-- navigation -->
+    <nav class="navbar navbar-dark  bg-dark">
+      <a class="navbar-brand" href="/">Restaurant List</a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-light">Login</a>
+      {{/if}}
+    </nav>
+  </header>
   <main>
     {{{body}}}
   </main>

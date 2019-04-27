@@ -19,20 +19,49 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
+let errors = []
 router.post('/register', (req, res) => {
   const { name, email, password, password2 } = req.body
-  User.findOne({ email })
-    .then(user => {
-      if (!user) {
-        const newUser = new User({ name, email, password })
-        newUser.save().then(user => {
-          res.render('login')
-        })
-      } else {
-        res.render('register')
-      }
-    })
-    .catch(err => console.log(err))
+  errors = []
+  if (checkInput(name, email, password, password2)) {
+    res.render('register', { name, email, password, password2, errors })
+  } else {
+    User.findOne({ email })
+      .then(user => {
+        if (!user) {
+          const newUser = new User({ name, email, password })
+          newUser.save().then(user => {
+            res.render('login')
+          })
+        } else {
+          errors.push({ message: '該email已經註冊過了!' })
+          res.render('register', { name, email, password, password2, errors })
+        }
+      })
+      .catch(err => console.log(err))
+  }
 })
+
+router.get('/logout', (req, res) => {
+  req.logOut()
+  req.flash('success_msg', '登出成功')
+  res.redirect('/users/login')
+})
+
+const checkInput = (name, email, password, password2) => {
+  if (!email || !password) {
+    errors.push({ message: 'email、密碼欄位為必填' })
+  }
+
+  if (password !== password2) {
+    errors.push({ message: '密碼不一致' })
+  }
+
+  if (errors.length > 0) {
+    return true
+  } else {
+    return false
+  }
+}
 
 module.exports = router

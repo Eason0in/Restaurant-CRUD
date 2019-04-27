@@ -109,3 +109,7 @@ i.fa-star-yellow {
 .detail-starts .fa {
   font-size: 20px;
 }
+
+a.alert-link {
+  text-decoration: underline;
+}

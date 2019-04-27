@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant.js')
-const sortInfosArray = require('../public/javascripts/sortInfosArray')
+const sortInfos = require('../public/javascripts/sortInfos')
 
 //搜尋依餐廳、分類
 router.get('/', (req, res) => {
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
             restaurants,
             keyword: req.query.keyword,
             sortName: req.params.sortName,
-            sortInfosArray
+            sortInfos
           })
   )
 })

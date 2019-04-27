@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
+const flash = require('connect-flash')
 const app = express()
 const port = 3000
 
@@ -19,11 +20,21 @@ app.use(methodOverride('_method'))
 app.use(session({ secret: 'ddd123', resave: false, saveUninitialized: true }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(flash())
+
 mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true, useFindAndModify: false })
 const db = mongoose.connection
 
 db.on('error', () => console.log('db error!'))
 db.once('open', () => console.log('db is connected!'))
+
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
 
 require('./config/passport')(passport)
 
