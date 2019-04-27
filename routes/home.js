@@ -6,7 +6,9 @@ const { authenticated } = require('../config/auth')
 
 //首頁
 router.get('/', authenticated, (req, res) => {
-  Restaurant.find((err, restaurants) => (err ? console.error(err) : res.render('index', { restaurants, sortInfos })))
+  Restaurant.find({ userId: req.user._id }, (err, restaurants) =>
+    err ? console.error(err) : res.render('index', { restaurants, sortInfos })
+  )
 })
 
 module.exports = router

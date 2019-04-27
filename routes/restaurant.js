@@ -8,7 +8,7 @@ const { authenticated } = require('../config/auth')
 
 //GET詳細資料頁面
 router.get('/detail/:_id', authenticated, (req, res) => {
-  Restaurant.findById(req.params._id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params._id, userId: req.user._id }, (err, restaurant) => {
     if (err) console.error(err)
     const encodeURILocation = encodeURIComponent(restaurant.location)
     restaurant.googleMapUrl = `
@@ -19,7 +19,7 @@ router.get('/detail/:_id', authenticated, (req, res) => {
 
 //GET新增頁面
 router.get('/add', authenticated, (req, res) => {
-  Restaurant.find((err, restaurants) => {
+  Restaurant.find({ userId: req.user._id }, (err, restaurants) => {
     if (err) console.error(err)
     res.render('new')
   })
@@ -28,7 +28,7 @@ router.get('/add', authenticated, (req, res) => {
 //POST新增
 router.post('/add', authenticated, (req, res) => {
   const newRestaurant = Restaurant(req.body)
-
+  newRestaurant.userId = req.user._id
   //把圖片搬到public.img底下
   if (req.files) {
     const { uploadFile } = req.files
@@ -45,12 +45,14 @@ router.post('/add', authenticated, (req, res) => {
 
 //POST刪除
 router.delete('/delete/:_id', authenticated, (req, res) =>
-  Restaurant.findByIdAndDelete(req.params._id, err => (err ? console.error(err) : res.redirect('/')))
+  Restaurant.findOneAndDelete({ _id: req.params._id, userId: req.user._id }, err =>
+    err ? console.error(err) : res.redirect('/')
+  )
 )
 
 //GET修改頁面
 router.get('/edit/:_id', authenticated, (req, res) => {
-  Restaurant.findById(req.params._id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params._id, userId: req.user._id }, (err, restaurant) => {
     if (err) console.error(err)
     restaurant.imageStr = path.basename(restaurant.image, '.jpg')
     res.render('edit', { restaurant })
@@ -70,7 +72,9 @@ router.put('/edit/:_id', authenticated, (req, res) => {
   }
 
   //更新資料
-  Restaurant.findByIdAndUpdate(req.body._id, req.body, err => (err ? console.error(err) : res.redirect('/')))
+  Restaurant.findOneAndUpdate({ _id: req.params._id, userId: req.user._id }, req.body, err =>
+    err ? console.error(err) : res.redirect('/')
+  )
 })
 
 //依照評分產生星星
