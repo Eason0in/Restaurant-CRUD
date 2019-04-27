@@ -43,6 +43,7 @@ app.use('/restaurants', require('./routes/restaurant'))
 app.use('/sort', require('./routes/sort'))
 app.use('/search', require('./routes/search'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auth'))
 
 //監聽伺服器
 app.listen(port, () => console.log(`Start in http://localhost:${port}`))

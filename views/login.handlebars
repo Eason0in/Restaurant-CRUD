@@ -2,6 +2,8 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mb-3">Login</h1>
+      {{> testData}}
+      {{> messages}}
       <form action="/users/login" method="POST">
         <div class="form-group">
           <label for="email">Email</label>
@@ -14,11 +16,11 @@
             value="{{password}}" />
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <a href="/auth/facebook" class="btn btn-primary btn-block">Facebook Login</a>
       </form>
       <p class="lead mt-4">
         No Account? <a href="/users/register" class="alert-link">Register</a>
       </p>
-      {{> messages}}
     </div>
   </div>
 </div>

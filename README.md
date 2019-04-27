@@ -33,7 +33,7 @@ cd Restaurant-CRUD  //切至專案資料夾
 npm install  //安裝套件
 ```
 
-3.產生預設資料至 MongoDB
+3.產生預設使用者及餐廳資料至 MongoDB
 
 ```
 cd models\seeds\  //切換至種子資料目錄
@@ -43,7 +43,7 @@ cd models\seeds\  //切換至種子資料目錄
 node restaurantSeeder.js  //執行增加資料至 MongoDB
 ```
 
-終端顯示 `insert done!` 即完成新增資料
+終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
 
 4.開啟程式
 
@@ -56,6 +56,16 @@ npm run start  //執行程式
 ```
 
 終端顯示 `db is connected!` 即啟動完成，請至[http://localhost:3000](http://localhost:3000)開始使用程式
+
+## Test Data
+
+- Account
+  - email_1：asd@asd
+  - email_2：asd2@asd
+  - password：asd
+- Facebook
+  - email：restaurant_eppxhys_test@tfbnw.net
+  - password：asD333
 
 ## Screen Photo
 
