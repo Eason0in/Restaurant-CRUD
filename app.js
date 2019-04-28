@@ -11,10 +11,6 @@ const flash = require('connect-flash')
 const app = express()
 const port = 3000
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
-
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
