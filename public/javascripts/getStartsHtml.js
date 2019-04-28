@@ -1,5 +1,6 @@
+'use strict'
 //產生星星HTML
-function getStartsHtml(yellowNum, decimalNum, grayNum) {
+const getStartsHtml = (yellowNum, decimalNum, grayNum) => {
   const startInfosMap = [
     { color: 'yellow', num: yellowNum },
     { color: null, num: decimalNum },

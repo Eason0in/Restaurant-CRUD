@@ -1,3 +1,4 @@
+'use strict'
 const sortInfos = [
   { name: '名稱', condition: 'name' },
   { name: '類別', condition: 'category' },

@@ -1,8 +1,10 @@
+'use strict'
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
+const getBcryptPassword = require('../public/javascripts/getBcryptPassword')
 
 module.exports = passport => {
   passport.use(
@@ -34,6 +36,8 @@ module.exports = passport => {
       },
       (accessToken, refreshToken, profile, done) => {
         const { name, email } = profile._json
+        const newUser = new User()
+
         User.findOne({ email }, (err, user) => {
           if (err) throw err
           if (!user) {
@@ -41,25 +45,22 @@ module.exports = passport => {
               .toString(36)
               .slice(-8)
 
-            bcrypt.genSalt(10, (err, salt) => {
-              bcrypt.hash(randomPassword, salt, (err, hash) => {
-                const newUser = new User({
-                  email: email,
-                  name: name,
-                  password: hash
-                })
+            Object.assign(newUser, { email, name })
 
-                newUser
-                  .save()
-                  .then(user => {
-                    return done(null, user)
-                  })
-                  .catch(err => console.log(err))
-              })
-            })
+            getBcryptPassword(randomPassword, insertData)
           }
           return done(null, user)
         })
+
+        const insertData = bcryptPassword => {
+          newUser.password = bcryptPassword
+          newUser
+            .save()
+            .then(user => {
+              return done(null, user)
+            })
+            .catch(err => console.log(err))
+        }
       }
     )
   )

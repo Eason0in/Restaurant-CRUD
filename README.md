@@ -36,20 +36,16 @@ npm install  //安裝套件
 3.產生預設使用者及餐廳資料至 MongoDB
 
 ```
-cd models\seeds\  //切換至種子資料目錄
-```
-
-```
-node restaurantSeeder.js  //執行增加資料至 MongoDB
+npm run insertSeeds  //執行增加資料至 MongoDB
 ```
 
 終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
 
-4.開啟程式
+```
+Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
+```
 
-```
-cd ..\..  //切回至專案目錄
-```
+4.開啟程式
 
 ```
 npm run start  //執行程式
@@ -69,6 +65,7 @@ npm run start  //執行程式
 
 ## Screen Photo
 
+![登入](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/login.JPG)
 ![首頁](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/index.JPG)
 ![修改](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/edit.JPG)
 ![搜尋](https://github.com/Eason0in/Restaurant-CRUD/blob/master/public/img/search.JPG)

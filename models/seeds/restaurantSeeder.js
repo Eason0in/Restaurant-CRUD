@@ -2,20 +2,11 @@
 const mongoose = require('mongoose')
 const Restaurant = require('../restaurant')
 const User = require('../user')
-const bcrypt = require('bcryptjs')
+const getBcryptPassword = require('../../public/javascripts/getBcryptPassword')
 mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
 const db = mongoose.connection
 
-function getBcryptPassword(datasInsert) {
-  let initPassword = 'asd'
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(initPassword, salt, (err, hash) => {
-      datasInsert(hash)
-    })
-  })
-}
-
-function datasInsert(bcryptPassword) {
+const insertDatas = bcryptPassword => {
   User.insertMany(
     [
       {
@@ -149,5 +140,6 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('db connected!')
-  getBcryptPassword(datasInsert)
+  let initPassword = 'asd'
+  getBcryptPassword(initPassword, insertDatas)
 })
