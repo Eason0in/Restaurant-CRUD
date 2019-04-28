@@ -32,12 +32,12 @@
         </button>
         <div class="dropdown-menu">
           <div class="dropdown-header">A->Z</div>
-          {{#each sortInfosArray}}
+          {{#each sortInfos}}
           <a class="dropdown-item" href="/sort/{{this.condition}}/{{this.name}} A->Z">{{this.name}}</a>
           {{/each}}
 
           <div class="dropdown-header">Z->A</div>
-          {{#each sortInfosArray}}
+          {{#each sortInfos}}
           <a class="dropdown-item" href="/sort/-{{this.condition}}/{{this.name}} Z->A">{{this.name}}</a>
           {{/each}}
         </div>

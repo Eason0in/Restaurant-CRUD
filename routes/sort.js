@@ -5,7 +5,7 @@ const sortInfos = require('../public/javascripts/sortInfos')
 
 //排序
 router.get('/:sortCondition/:sortName', (req, res) => {
-  Restaurant.find()
+  Restaurant.find({ userId: req.user._id })
     .sort(req.params.sortCondition)
     .exec((err, restaurants) =>
       err ? console.error(err) : res.render('index', { restaurants, sortName: req.params.sortName, sortInfos })
